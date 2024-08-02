@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Delegation Example</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .child {
+            margin: 5px;
+            padding: 10px;
+            background-color: #e7e7e7;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Event Delegation Example</h1>
+    <div class="container">
+        <div class="child" data-index="1">Child 1</div>
+        <div class="child" data-index="2">Child 2</div>
+        <div class="child" data-index="3">Child 3</div>
+        <div class="child" data-index="4">Child 4</div>
+    </div>
+
+    <script>
+        // Parent element
+        const container = document.querySelector('.container');
+
+        // Event delegation: Add a single event listener to the parent
+        container.addEventListener('click', function(event) {
+            // Check if the clicked element has the class 'child'
+            if (event.target.classList.contains('child')) {
+                // Access the clicked child element
+                const child = event.target;
+                const index = child.getAttribute('data-index');
+
+                // Perform some action
+                alert('Clicked on child ' + index);
+            }
+        });
+    </script>
+</body>
+</html>
